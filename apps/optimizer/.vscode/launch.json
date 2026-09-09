@@ -1,0 +1,22 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Otimizador - Exemplo CSV",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/main.py",
+      "cwd": "${workspaceFolder}",
+      "env": {
+        "PYTHONPATH": "${workspaceFolder}"
+      },
+      "args": [
+        "--entrada",
+        "exemplos/clients_analisados.csv",
+        "--algorithm",
+        "simplex"
+      ],
+      "console": "integratedTerminal"
+    }
+  ]
+}

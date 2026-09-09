@@ -1,0 +1,50 @@
+__pycache__
+dataset
+node_modules
+.next
+dist
+package-lock.json
+
+# Python
+*.py[cod]
+__pycache__/
+*.so
+
+# Virtual environments
+venv/
+.venv/
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+
+# Tests
+.pytest_cache/
+coverage.xml
+
+# Data files generated locally at the repository root
+/*.csv
+/*.parquet
+apps/optimizer/examples/*.parquet
+
+# Local benchmark reports
+apps/optimizer/reports/
+
+# Editor directories and files
+.vscode/
+!apps/*/.vscode/
+!apps/*/.vscode/launch.json
+.idea/
+*.swp
+
+# OS files
+.DS_Store
+node_modules
+.next
+dist
+package-lock.json
+
+
+# AI file
+CLAUDE.md

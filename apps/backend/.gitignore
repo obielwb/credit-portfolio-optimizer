@@ -1,0 +1,26 @@
+/venv/
+.venv/
+.vscode/
+!.vscode/
+!.vscode/launch.json
+.env
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+
+# Testing
+.pytest_cache/
+coverage.xml
+
+# Logs
+*.log
+
+# Docker
+docker-compose.override.yml
+.env.local
