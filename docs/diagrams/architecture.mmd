@@ -1,0 +1,17 @@
+flowchart TB
+  FE["Next.js frontend :3000"]
+  API["FastAPI API :8000"]
+  PG[("PostgreSQL<br/>runs · results · parameters")]
+  MINIO[("MinIO<br/>uploads · exports")]
+  RMQ[["RabbitMQ<br/>async jobs"]]
+  W["Optimization worker"]
+  FEAT["Feature engineering"]
+  CL["K-Means / MiniBatch"]
+  OPT["Simplex / OR-Tools / Branch-and-Bound"]
+
+  FE --> API
+  API --> PG
+  API --> MINIO
+  API --> RMQ
+  RMQ --> W
+  W --> FEAT --> CL --> OPT

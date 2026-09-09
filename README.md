@@ -51,17 +51,44 @@ Full-stack decision-support system for assigning pre-approved credit limits acro
 
 ## Architecture
 
-![System architecture](docs/assets/architecture-overview.png)
+```mermaid
+flowchart TB
+  FE["Next.js frontend :3000"]
+  API["FastAPI API :8000"]
+  PG[("PostgreSQL<br/>runs · results · parameters")]
+  MINIO[("MinIO<br/>uploads · exports")]
+  RMQ[["RabbitMQ<br/>async jobs"]]
+  W["Optimization worker"]
+  FEAT["Feature engineering"]
+  CL["K-Means / MiniBatch"]
+  OPT["Simplex / OR-Tools / Branch-and-Bound"]
 
-<p align="center"><em>Frontend → FastAPI → PostgreSQL / MinIO / RabbitMQ → optimization worker</em></p>
+  FE --> API
+  API --> PG
+  API --> MINIO
+  API --> RMQ
+  RMQ --> W
+  W --> FEAT --> CL --> OPT
+```
+
+Sources: [`docs/diagrams/architecture.mmd`](docs/diagrams/architecture.mmd) · [SVG](docs/assets/architecture-overview.svg)
 
 For a deeper component walkthrough, see [Architecture](docs/ARCHITECTURE.md).
 
 ## Optimization pipeline
 
-![Optimization pipeline](docs/assets/optimization-pipeline.png)
+```mermaid
+flowchart LR
+  A["1. Ingestion & feature engineering"]
+  B["2. Business filtering"]
+  C["3. Clustering<br/>K-Means / MiniBatch"]
+  D["4. Policy assignment"]
+  E["5. Optimization & post-processing"]
 
-<p align="center"><em>Ingestion → business filters → clustering → policy assignment → optimization & post-processing</em></p>
+  A --> B --> C --> D --> E
+```
+
+Sources: [`docs/diagrams/optimization-pipeline.mmd`](docs/diagrams/optimization-pipeline.mmd) · [SVG](docs/assets/optimization-pipeline.svg)
 
 ## Repository layout
 
@@ -73,7 +100,8 @@ For a deeper component walkthrough, see [Architecture](docs/ARCHITECTURE.md).
 │   └── optimizer/     # Clustering and mathematical optimization pipeline
 ├── docs/
 │   ├── ARCHITECTURE.md
-│   └── assets/        # Diagrams used in this README
+│   ├── assets/        # Exported SVG diagrams
+│   └── diagrams/      # Mermaid sources (.mmd)
 └── README.md
 ```
 
